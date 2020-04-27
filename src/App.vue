@@ -1,13 +1,9 @@
 <template>
   <div>
-    <h1>Todo App</h1>
     <md-card>
+      <h1>Todo App</h1>
       <md-field>
-        <md-input
-          v-model="currentTodo"
-          @keydown.enter="addTodo()"
-          placeholder="Add new item"
-        ></md-input>
+        <md-input v-model="currentTodo" @keydown.enter="addTodo()" placeholder="Add new item"></md-input>
       </md-field>
 
       <ul class="todos">
@@ -23,8 +19,7 @@
             class="editing"
             :class="{ editing: todo == editedTodo }"
             @dblclick="editTodo(todo)"
-            >{{ todo.label }}</span
-          >
+          >{{ todo.label }}</span>
           <span v-if="todo.editing" class="editing">
             <md-input
               type="text"
@@ -35,18 +30,10 @@
               placeholder="Add item here"
             />
           </span>
-          <button v-if="todo.editing === false" @click="editTodo(todo)">
-            Edit
-          </button>
-          <button v-if="todo.editing === true" @click="stopEdit(todo)">
-            Save
-          </button>
-          <button v-if="todo.editing === false" @click="removeTodo(todo)">
-            Delete
-          </button>
-          <button v-if="todo.editing === true" @click="editTodo(todo)">
-            Cancel
-          </button>
+          <button v-if="todo.editing === false" @click="editTodo(todo)">Edit</button>
+          <button v-if="todo.editing === true" @click="stopEdit(todo)">Save</button>
+          <button v-if="todo.editing === false" @click="removeTodo(todo)">Delete</button>
+          <button v-if="todo.editing === true" @click="editTodo(todo)">Cancel</button>
         </li>
       </ul>
     </md-card>
@@ -59,7 +46,7 @@ export default {
     return {
       todos: [],
       currentTodo: "",
-      editedTodo: "",
+      editedTodo: ""
     };
   },
   methods: {
@@ -68,7 +55,7 @@ export default {
         id: this.todos.length,
         label: this.currentTodo,
         completed: false,
-        editing: false,
+        editing: false
       });
       this.currentTodo = "";
     },
@@ -82,8 +69,8 @@ export default {
     },
     stopEdit(todo) {
       todo.editing = false;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -94,12 +81,13 @@ body {
   line-height: 1.4;
   margin-left: 30px;
   margin-right: 30px;
-  background-color: aquamarine;
+  background-color: black;
 }
 .md-card {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+  background-color: aquamarine;
 }
 ul {
   list-style-type: none;
